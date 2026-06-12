@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     /* --- VARIÁVEIS E RESET --- */
@@ -629,28 +629,23 @@
 
     // Lógica para interceptar o formulário e enviar via WhatsApp
     document.getElementById('formularioContato').addEventListener('submit', function(e) {
-      e.preventDefault(); // Impede a página de recarregar
+      e.preventDefault();
 
-      // Coleta dos dados preenchidos
       const nome = document.getElementById('nomeCliente').value;
       const telefone = document.getElementById('telefoneCliente').value;
       const email = document.getElementById('emailCliente').value || 'Não informado';
       const mensagem = document.getElementById('mensagemCliente').value;
 
-      // Número de destino (Dra. Cristiane)
       const numeroWhats = "5511974609378";
 
-      // Formatação estilizada do texto (* deixa em negrito no WhatsApp)
       const textoMensagem = `Olá, Dra. Cristiane! Gostaria de agendar uma consultoria patrimonial.\n\n` +
                             `*Nome:* ${nome}\n` +
                             `*Telefone:* ${telefone}\n` +
                             `*E-mail:* ${email}\n\n` +
                             `*Breve descrição do caso:* ${mensagem}`;
 
-      // Cria a URL estruturada e codifica os caracteres especiais
       const urlFinal = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(textoMensagem)}`;
 
-      // Abre o WhatsApp em uma nova aba
       window.open(urlFinal, '_blank');
     });
   </script>
